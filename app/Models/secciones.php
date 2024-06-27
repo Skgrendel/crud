@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class vs_departamento extends Model
+class secciones extends Model
 {
     use HasFactory;
-
-    protected $table = 'vs_departamento';
+    protected $table  = 'secciones';
     protected $fillable = [
         'nombre',
-        'nomenclatura',
+        'descripcion'
     ];
 }

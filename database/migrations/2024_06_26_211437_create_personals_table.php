@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->string('direccion', 100);
-            $table->string('Seccion_empresa', 3);
-            $table->string('Departamento_empresa', 3);
+            $table->foreignId('seccion_id');
+            $table->foreignId('departamento_id');
             $table->boolean('estado')->default('1');
             $table->timestamps();
         });

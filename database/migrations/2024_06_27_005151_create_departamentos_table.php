@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('encabezados_dets', function (Blueprint $table) {
+        Schema::create('departamentos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('encabezado_id');
-            $table->string('nombre',100);
-            $table->string('nomenclatura',200);
+            $table->foreignId('seccion_id');
+            $table->string('nombre', 100);
+            $table->string('descripcion', 150);
             $table->boolean('estado')->default('1');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('encabezados_dets');
+        Schema::dropIfExists('departamentos');
     }
 };
