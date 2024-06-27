@@ -14,7 +14,7 @@ class PersonalsController extends Controller
      */
     public function index()
     {
-
+        //Muestra todo el personal con estado Activo
         $personals = personals::where('estado', 1)->get();
         return view('dashboard', compact('personals'));
     }
@@ -24,6 +24,7 @@ class PersonalsController extends Controller
      */
     public function create()
     {
+        // muestra la vista crear con las tablas relacionadas
         $secciones = secciones::pluck('nombre', 'id');
         $departamentos = departamentos::pluck('nombre', 'id');
         return view('personal.create', compact('secciones', 'departamentos'));
@@ -34,6 +35,7 @@ class PersonalsController extends Controller
      */
     public function store(Request $request)
     {
+        // almaacena la informacion del formulario
         $data = personals::create([
             'nombre' => $request->input('nombre'),
             'direccion' => $request->input('direccion'),
@@ -57,6 +59,7 @@ class PersonalsController extends Controller
      */
     public function edit(string $id)
     {
+        // buscal la informacion  a editar y la muestra en la vista
         $personals = personals::find($id);
         $secciones = secciones::pluck('nombre', 'id');
         $departamentos = departamentos::pluck('nombre', 'id');
@@ -68,6 +71,7 @@ class PersonalsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //busca el registro y luego lo modifica con la informacion del formulario
         $personals = personals::find($id);
         $data = $request->all();
         $personals->update($data);
@@ -79,6 +83,8 @@ class PersonalsController extends Controller
      */
     public function destroy(string $id)
     {
+
+        // busca el registro y actualiza el estado a inactivo
         $personals = personals::find($id);
         $personals->update([
             'estado' => '0'
